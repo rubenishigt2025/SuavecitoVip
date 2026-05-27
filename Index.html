@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor Premium 4:3</title>
+    
+    <!-- Script de Publicidad de la Red (Cargado de forma segura y asíncrona) -->
+    <script src="https://pl29563770.effectivecpmnetwork.com/55/58/60/5558606f5e01758c3d0208faa411e5f8.js" async></script>
+
+    <style>
+        /* Estilos de Diseño Ultra Oscuro y Moderno */
+        body {
+            background-color: #08080a;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 24px 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 520px; /* Tamaño ideal para mantener el formato 4:3 cómodo en móviles y PC */
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Contenedor del Reproductor 4:3 */
+        .player-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3; /* Relación de aspecto solicitada */
+            background-color: #000000;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ajusta el video sin distorsionarlo */
+            display: block;
+        }
+
+        /* Pantalla de Bloqueo / Reproducir Ahora */
+        .overlay-gate {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(10, 10, 12, 0.95) 0%, rgba(0, 0, 0, 0.9) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            cursor: pointer;
+            transition: opacity 0.4s ease;
+        }
+
+        /* Botón de Reproducción con Efecto Neón */
+        .play-now-btn {
+            background: linear-gradient(135deg, #ff0055 0%, #9900ff 100%);
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 800;
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 0 25px rgba(230, 0, 120, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+        }
+
+        .play-now-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px rgba(230, 0, 120, 0.8);
+        }
+
+        .play-now-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Botón Discord Premium */
+        .btn-discord {
+            background-color: #5865F2;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 16px 24px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 8px 20px rgba(88, 101, 242, 0.25);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-discord:hover {
+            background-color: #4752c4;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(88, 101, 242, 0.4);
+        }
+
+        .btn-discord svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* Deshabilitar opciones de guardado adicionales en controles integrados */
+        video::-webkit-media-controls-enclosure {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <!-- Contenedor del Video -->
+        <div class="player-container" id="playerArea" oncontextmenu="return false;">
+            
+            <!-- Pantalla de Bloqueo (Play Gate) -->
+            <div class="overlay-gate" id="playGate" onclick="desbloquearYReproducir()">
+                <button class="play-now-btn">
+                    <!-- Icono de Play -->
+                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    Reproducir Ahora
+                </button>
+            </div>
+
+            <!-- Reproductor de Video (Sin opción de descarga directa) -->
+            <video id="videoPlayer" controlsList="nodownload noplaybackrate" disablePictureInPicture>
+                <source src="https://files.catbox.moe/2vmj1l.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de este video.
+            </video>
+        </div>
+
+        <!-- Botón de Discord (Botón de descarga eliminado según tus indicaciones) -->
+        <a href="https://discord.gg/8c7Bry3uj" target="_blank" class="btn-discord">
+            <!-- Icono Oficial de Discord -->
+            <svg viewBox="0 0 127.14 96.36">
+                <path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a77.7,77.7,0,0,0,6.63-10.85,68.43,68.43,0,0,1-10.5-5c.89-.65,1.76-1.34,2.58-2a75.58,75.58,0,0,0,73.1,0c.83.71,1.69,1.4,2.58,2a68.43,68.43,0,0,1-10.5,5,77.7,77.7,0,0,0,6.63,10.85,105.73,105.73,0,0,0,31.06-18.83C129.66,50.75,123.51,28,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.83,46,53.83,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.07,46,96.07,53,91,65.69,84.69,65.69Z"/>
+            </svg>
+            Unirse a Discord
+        </a>
+    </div>
+
+    <script>
+        const video = document.getElementById('videoPlayer');
+        const gate = document.getElementById('playGate');
+        const playerArea = document.getElementById('playerArea');
+
+        const adUrl = "https://www.effectivegatecpm.com/gug4t17dru?key=2d7d9a881dfa0648fd0d7040624155ef";
+        
+        let adsServed = 0;
+        let lastAdTime = 0;
+        const adIntervalLimit = 15000; // Intervalo de 15 segundos entre anuncios
+
+        // 1. Desbloqueo Inicial Obligatorio al hacer Clic en "Reproducir Ahora"
+        function desbloquearYReproducir() {
+            // Abre el primer anuncio obligatorio
+            window.open(adUrl, '_blank');
+            
+            // Oculta el panel protector e inicia el video
+            gate.style.opacity = '0';
+            setTimeout(() => {
+                gate.style.display = 'none';
+            }, 400);
+
+            video.play();
+            
+            // Registra el tiempo de este primer anuncio
+            lastAdTime = Date.now();
+            adsServed = 1;
+
+            // Inicia la escucha inteligente de interacciones para los siguientes 2 anuncios
+            activarMonetizacionInteractiva();
+        }
+
+        // 2. Sistema de Monetización Inteligente (Antiblocks)
+        // Se asocia a clics naturales del usuario en el área del reproductor para saltarse restricciones de navegadores.
+        function activarMonetizacionInteractiva() {
+            playerArea.addEventListener('click', () => {
+                const currentTime = Date.now();
+                
+                // Verifica si se cumplen las condiciones:
+                // - No se han mostrado más de 3 anuncios en total
+                // - Han pasado al menos 15 segundos desde el último anuncio
+                if (adsServed < 3 && (currentTime - lastAdTime) >= adIntervalLimit) {
+                    window.open(adUrl, '_blank');
+                    lastAdTime = currentTime;
+                    adsServed++;
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
